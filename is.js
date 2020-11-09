@@ -737,17 +737,17 @@
     // mobile method does not support 'all' and 'any' interfaces
     is.mobile.api = ['not'];
 
-    // is current state offline?
-    is.offline = not(is.online);
-    // offline method does not support 'all' and 'any' interfaces
-    is.offline.api = ['not'];
-
     // is current state online?
     is.online = function() {
         return !navigator || navigator.onLine === true;
     };
     // online method does not support 'all' and 'any' interfaces
     is.online.api = ['not'];
+
+    // is current state offline?
+    is.offline = not(is.online);
+    // offline method does not support 'all' and 'any' interfaces
+    is.offline.api = ['not'];
 
     // is current browser opera?
     // parameter is optional
