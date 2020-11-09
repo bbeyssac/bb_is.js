@@ -677,7 +677,12 @@
     // parameter is optional
     is.ipad = function(range) {
         var match = userAgent.match(/ipad.+?os (\d+)/);
-        return match !== null && compareVersion(match[1], range);
+        var result = match !== null && compareVersion(match[1], range);
+        
+        if (!result)
+            result = navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /MacIntel/.test(platform);
+
+        return result;
     };
     // ipad method does not support 'all' and 'any' interfaces
     is.ipad.api = ['not'];
