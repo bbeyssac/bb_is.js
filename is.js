@@ -648,6 +648,15 @@
     // edge method does not support 'all' and 'any' interfaces
     is.edge.api = ['not'];
 
+    // is current browser edge chromium?
+    // parameter is optional
+    is.edgeChromium = function(range) {
+        var match = userAgent.match(/edg\/(\d+)/);
+        return match !== null && compareVersion(match[1], range);
+    };
+    // edge method does not support 'all' and 'any' interfaces
+    is.edgeChromium.api = ['not'];
+    
     // is current browser firefox?
     // parameter is optional
     is.firefox = function(range) {
