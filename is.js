@@ -680,7 +680,7 @@
         var result = match !== null && compareVersion(match[1], range);
         
         if (!result)
-            result = navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /MacIntel/.test(platform);
+            result = navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /macintel/.test(platform);
 
         return result;
     };
