@@ -623,11 +623,20 @@
     // blackberry method does not support 'all' and 'any' interfaces
     is.blackberry.api = ['not'];
 
+    // is current browser edge chromium?
+    // parameter is optional
+    is.edgeChromium = function(range) {
+        var match = userAgent.match(/edg\/(\d+)/);
+        return match !== null && compareVersion(match[1], range);
+    };
+    // edge method does not support 'all' and 'any' interfaces
+    is.edgeChromium.api = ['not'];
+
     // is current browser chrome?
     // parameter is optional
     is.chrome = function(range) {
         var match = /google inc/.test(vendor) ? userAgent.match(/(?:chrome|crios)\/(\d+)/) : null;
-        return match !== null && is.not.opera() && compareVersion(match[1], range);
+        return match !== null && is.not.opera() && is.not.edgeChromium() && compareVersion(match[1], range);
     };
     // chrome method does not support 'all' and 'any' interfaces
     is.chrome.api = ['not'];
@@ -647,15 +656,6 @@
     };
     // edge method does not support 'all' and 'any' interfaces
     is.edge.api = ['not'];
-
-    // is current browser edge chromium?
-    // parameter is optional
-    is.edgeChromium = function(range) {
-        var match = userAgent.match(/edg\/(\d+)/);
-        return match !== null && compareVersion(match[1], range);
-    };
-    // edge method does not support 'all' and 'any' interfaces
-    is.edgeChromium.api = ['not'];
     
     // is current browser firefox?
     // parameter is optional
